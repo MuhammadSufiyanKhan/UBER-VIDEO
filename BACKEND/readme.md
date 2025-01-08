@@ -103,4 +103,41 @@ password
 ### Notes
 - Password is automatically hashed before storage
 - JWT token is generated using the user's ID
+<!--
+This document specifies that the email address must be unique within the system.
+-->
 - Email must be unique in the system
+## User Profile Management
+
+### Get User Profile
+Retrieves authenticated user's profile information including their ID, name, email and role.
+
+**Example Request:**
+
+### GET /users/profile
+Protected endpoint to retrieve the current user's profile information.
+- **Authentication**: Required (JWT token)
+- **Response**: 
+    - `200 OK`: Returns user profile data
+    ```json
+    {
+        "id": "string",
+        "name": "string",
+        "email": "string",
+        "role": "string"
+    }
+    ```
+    - `401 Unauthorized`: Invalid or missing token
+
+### POST /users/logout
+Endpoint to logout the current user and invalidate their session.
+- **Authentication**: Required (JWT token)
+- **Response**:
+    - `200 OK`: Successfully logged out
+    ```json
+    {
+        "message": "Successfully logged out"
+    }
+    ```
+    - `401 Unauthorized`: Invalid or missing token
+
